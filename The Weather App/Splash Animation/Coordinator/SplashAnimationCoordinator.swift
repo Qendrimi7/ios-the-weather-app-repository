@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SplashScreenAnimationCoordinator: SplashAnimationCoordinatorProtocol {
+class SplashAnimationCoordinator: SplashAnimationCoordinatorProtocol {
    
     // MARK: - Data
     private let presenter: UINavigationController

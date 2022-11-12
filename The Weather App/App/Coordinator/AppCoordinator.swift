@@ -21,7 +21,10 @@ class AppCoordinator {
     }
     
     func presentAnimation() {
-        
+        let animationController: AnimationController = AnimationController()
+        let navigationController = UINavigationController(rootViewController: animationController)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
     
     func presentHome() {

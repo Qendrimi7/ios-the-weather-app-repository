@@ -9,6 +9,11 @@ import UIKit
 
 class AppCoordinator {
     
+    /**
+    Returns the default singleton instance.
+    */
+    static let shared = AppCoordinator()
+    
     private var window: UIWindow?
 
     func setupAppNavigation(window: UIWindow? = UIApplication.shared.windows.first { $0.isKeyWindow }) {
@@ -17,13 +22,13 @@ class AppCoordinator {
     }
     
     func setUpNavigation() {
-        presentAnimation()
+        presentSplashAnimationController()
     }
     
-    func presentAnimation() {
-        let animationController: AnimationController = AnimationController()
-        let navigationController = UINavigationController(rootViewController: animationController)
-        window?.rootViewController = navigationController
+    func presentSplashAnimationController() {
+        let splashAnimationController: SplashAnimationController = SplashAnimationController()
+        let navigationController = UINavigationController(rootViewController: splashAnimationController)
+        window?.rootViewController = splashAnimationController
         window?.makeKeyAndVisible()
     }
     

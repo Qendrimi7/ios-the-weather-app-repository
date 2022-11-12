@@ -1,13 +1,13 @@
 //
-//  AnimationController.swift
+//  SplashAnimationController.swift
 //  The Weather App
 //
-//  Created by linkplus on 12.11.22.
+//  Created by Qëndrim Mjeku on 12.11.22.
 //
 
 import UIKit
 
-class AnimationController: UIViewController {
+class SplashAnimationController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

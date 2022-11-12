@@ -20,7 +20,9 @@
 		486F9211291FD6A000B53ED9 /* APIRequestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9210291FD6A000B53ED9 /* APIRequestObject.swift */; };
 		486F9213291FD6AE00B53ED9 /* APIResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9212291FD6AE00B53ED9 /* APIResponseObject.swift */; };
 		486F9215291FD6EF00B53ED9 /* AlamofireParametersConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9214291FD6EF00B53ED9 /* AlamofireParametersConvertible.swift */; };
-		486F9219291FD91500B53ED9 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9218291FD91500B53ED9 /* AnimationController.swift */; };
+		486F9219291FD91500B53ED9 /* SplashAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9218291FD91500B53ED9 /* SplashAnimationController.swift */; };
+		486F921C291FE90900B53ED9 /* SplashAnimationCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F921B291FE90900B53ED9 /* SplashAnimationCoordinatorProtocol.swift */; };
+		486F921E291FE93E00B53ED9 /* SplashAnimationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F921D291FE93E00B53ED9 /* SplashAnimationCoordinator.swift */; };
 		D0F1D490A48A7C1F03BE63DC /* Pods_The_Weather_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CCD15A51A59DB5712FBFBD /* Pods_The_Weather_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +61,9 @@
 		486F9210291FD6A000B53ED9 /* APIRequestObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestObject.swift; sourceTree = "<group>"; };
 		486F9212291FD6AE00B53ED9 /* APIResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseObject.swift; sourceTree = "<group>"; };
 		486F9214291FD6EF00B53ED9 /* AlamofireParametersConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireParametersConvertible.swift; sourceTree = "<group>"; };
-		486F9218291FD91500B53ED9 /* AnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
+		486F9218291FD91500B53ED9 /* SplashAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimationController.swift; sourceTree = "<group>"; };
+		486F921B291FE90900B53ED9 /* SplashAnimationCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimationCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		486F921D291FE93E00B53ED9 /* SplashAnimationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimationCoordinator.swift; sourceTree = "<group>"; };
 		6B2E6C38595C02618A844A6D /* Pods-The Weather App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Weather App.debug.xcconfig"; path = "Target Support Files/Pods-The Weather App/Pods-The Weather App.debug.xcconfig"; sourceTree = "<group>"; };
 		84D2D19E700AE5E9AA37F21B /* Pods-The Weather App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Weather App.release.xcconfig"; path = "Target Support Files/Pods-The Weather App/Pods-The Weather App.release.xcconfig"; sourceTree = "<group>"; };
 		E6CCD15A51A59DB5712FBFBD /* Pods_The_Weather_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Weather_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,7 +122,7 @@
 			children = (
 				486F9200291FCF0C00B53ED9 /* App */,
 				486F9201291FCF1300B53ED9 /* Launch */,
-				486F9216291FD8DE00B53ED9 /* Animation */,
+				486F9216291FD8DE00B53ED9 /* Splash Animation */,
 				486F9202291FCF4500B53ED9 /* Resources */,
 				486F91DE291EA2A400B53ED9 /* Info.plist */,
 			);
@@ -229,20 +233,30 @@
 			path = "API Responses";
 			sourceTree = "<group>";
 		};
-		486F9216291FD8DE00B53ED9 /* Animation */ = {
+		486F9216291FD8DE00B53ED9 /* Splash Animation */ = {
 			isa = PBXGroup;
 			children = (
+				486F921A291FE8EB00B53ED9 /* Coordinator */,
 				486F9217291FD8EC00B53ED9 /* List */,
 			);
-			path = Animation;
+			path = "Splash Animation";
 			sourceTree = "<group>";
 		};
 		486F9217291FD8EC00B53ED9 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				486F9218291FD91500B53ED9 /* AnimationController.swift */,
+				486F9218291FD91500B53ED9 /* SplashAnimationController.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		486F921A291FE8EB00B53ED9 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				486F921B291FE90900B53ED9 /* SplashAnimationCoordinatorProtocol.swift */,
+				486F921D291FE93E00B53ED9 /* SplashAnimationCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		AE24C0F99153E056907FC963 /* Frameworks */ = {
@@ -440,10 +454,12 @@
 				486F9208291FD55600B53ED9 /* AppCoordinator.swift in Sources */,
 				486F920A291FD5DF00B53ED9 /* Environment.swift in Sources */,
 				486F91D1291EA2A300B53ED9 /* AppDelegate.swift in Sources */,
+				486F921E291FE93E00B53ED9 /* SplashAnimationCoordinator.swift in Sources */,
 				486F9211291FD6A000B53ED9 /* APIRequestObject.swift in Sources */,
 				486F91D3291EA2A300B53ED9 /* SceneDelegate.swift in Sources */,
-				486F9219291FD91500B53ED9 /* AnimationController.swift in Sources */,
+				486F9219291FD91500B53ED9 /* SplashAnimationController.swift in Sources */,
 				486F920C291FD5FB00B53ED9 /* EnvironmentURLKey.swift in Sources */,
+				486F921C291FE90900B53ED9 /* SplashAnimationCoordinatorProtocol.swift in Sources */,
 				486F9213291FD6AE00B53ED9 /* APIResponseObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

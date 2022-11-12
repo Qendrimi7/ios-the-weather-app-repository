@@ -24,7 +24,7 @@ class SceneDelegate:
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        AppCoordinator().setupAppNavigation(window: window)
+        AppCoordinator.shared.setupAppNavigation(window: window)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

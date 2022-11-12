@@ -1,0 +1,13 @@
+//
+//  Base.xcconfig
+//  The Weather App
+//
+//  Created by Qendrim Mjeku on 12.11.22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+APP_NAME = The Weather
+BASE_BUNDLE_IDENTIFIER = com.superb.The-Weather-App
+PRODUCT_BUNDLE_IDENTIFIER = $(BASE_BUNDLE_IDENTIFIER)

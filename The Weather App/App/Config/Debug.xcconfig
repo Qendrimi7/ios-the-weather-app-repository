@@ -1,0 +1,15 @@
+//
+//  Debug.xcconfig
+//  The Weather App
+//
+//  Created by Qendrim Mjeku on 12.11.22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Base.xcconfig"
+#include "Pods/Target Support Files/Pods-The Weather App/Pods-The Weather App.debug.xcconfig"
+
+APP_NAME = $(inherited) Dev
+PRODUCT_BUNDLE_IDENTIFIER = $(inherited).debug

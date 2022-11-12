@@ -23,6 +23,8 @@
 		486F9219291FD91500B53ED9 /* SplashAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9218291FD91500B53ED9 /* SplashAnimationController.swift */; };
 		486F921C291FE90900B53ED9 /* SplashAnimationCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F921B291FE90900B53ED9 /* SplashAnimationCoordinatorProtocol.swift */; };
 		486F921E291FE93E00B53ED9 /* SplashAnimationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F921D291FE93E00B53ED9 /* SplashAnimationCoordinator.swift */; };
+		486F9225291FFDA900B53ED9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 486F9223291FFDA900B53ED9 /* Colors.xcassets */; };
+		486F9226291FFDA900B53ED9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9224291FFDA900B53ED9 /* Theme.swift */; };
 		D0F1D490A48A7C1F03BE63DC /* Pods_The_Weather_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CCD15A51A59DB5712FBFBD /* Pods_The_Weather_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		486F921F291FEA8800B53ED9 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
 		486F9220291FEAAE00B53ED9 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		486F9221291FEAC000B53ED9 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		486F9223291FFDA900B53ED9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		486F9224291FFDA900B53ED9 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		6B2E6C38595C02618A844A6D /* Pods-The Weather App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Weather App.debug.xcconfig"; path = "Target Support Files/Pods-The Weather App/Pods-The Weather App.debug.xcconfig"; sourceTree = "<group>"; };
 		84D2D19E700AE5E9AA37F21B /* Pods-The Weather App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Weather App.release.xcconfig"; path = "Target Support Files/Pods-The Weather App/Pods-The Weather App.release.xcconfig"; sourceTree = "<group>"; };
 		E6CCD15A51A59DB5712FBFBD /* Pods_The_Weather_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Weather_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				486F91D9291EA2A400B53ED9 /* Assets.xcassets */,
+				486F9222291FFCE900B53ED9 /* Theme */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -263,6 +268,15 @@
 				486F921D291FE93E00B53ED9 /* SplashAnimationCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		486F9222291FFCE900B53ED9 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				486F9223291FFDA900B53ED9 /* Colors.xcassets */,
+				486F9224291FFDA900B53ED9 /* Theme.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		AE24C0F99153E056907FC963 /* Frameworks */ = {
@@ -388,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				486F9225291FFDA900B53ED9 /* Colors.xcassets in Resources */,
 				486F91DD291EA2A400B53ED9 /* LaunchScreen.storyboard in Resources */,
 				486F91DA291EA2A400B53ED9 /* Assets.xcassets in Resources */,
 			);
@@ -465,6 +480,7 @@
 				486F91D3291EA2A300B53ED9 /* SceneDelegate.swift in Sources */,
 				486F9219291FD91500B53ED9 /* SplashAnimationController.swift in Sources */,
 				486F920C291FD5FB00B53ED9 /* EnvironmentURLKey.swift in Sources */,
+				486F9226291FFDA900B53ED9 /* Theme.swift in Sources */,
 				486F921C291FE90900B53ED9 /* SplashAnimationCoordinatorProtocol.swift in Sources */,
 				486F9213291FD6AE00B53ED9 /* APIResponseObject.swift in Sources */,
 			);

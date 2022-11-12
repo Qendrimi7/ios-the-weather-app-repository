@@ -31,6 +31,12 @@
 		48AD95B7292003B300F7035F /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B6292003B300F7035F /* UITableView.swift */; };
 		48AD95B9292003CE00F7035F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B8292003CE00F7035F /* UIImageView.swift */; };
 		48AD95BB2920040800F7035F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95BA2920040800F7035F /* UIView.swift */; };
+		48AD95D1292005FC00F7035F /* Open Sans Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95CB292005FC00F7035F /* Open Sans Semibold.ttf */; };
+		48AD95D2292005FC00F7035F /* Open Sans Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95CC292005FC00F7035F /* Open Sans Light.ttf */; };
+		48AD95D3292005FC00F7035F /* Open Sans Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95CD292005FC00F7035F /* Open Sans Bold.ttf */; };
+		48AD95D4292005FC00F7035F /* Circular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95CE292005FC00F7035F /* Circular.ttf */; };
+		48AD95D5292005FC00F7035F /* Open Sans Extrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95CF292005FC00F7035F /* Open Sans Extrabold.ttf */; };
+		48AD95D6292005FC00F7035F /* Open Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95D0292005FC00F7035F /* Open Sans Regular.ttf */; };
 		D0F1D490A48A7C1F03BE63DC /* Pods_The_Weather_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CCD15A51A59DB5712FBFBD /* Pods_The_Weather_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +89,12 @@
 		48AD95B6292003B300F7035F /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		48AD95B8292003CE00F7035F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		48AD95BA2920040800F7035F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		48AD95CB292005FC00F7035F /* Open Sans Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Semibold.ttf"; sourceTree = "<group>"; };
+		48AD95CC292005FC00F7035F /* Open Sans Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Light.ttf"; sourceTree = "<group>"; };
+		48AD95CD292005FC00F7035F /* Open Sans Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Bold.ttf"; sourceTree = "<group>"; };
+		48AD95CE292005FC00F7035F /* Circular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Circular.ttf; sourceTree = "<group>"; };
+		48AD95CF292005FC00F7035F /* Open Sans Extrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Extrabold.ttf"; sourceTree = "<group>"; };
+		48AD95D0292005FC00F7035F /* Open Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Regular.ttf"; sourceTree = "<group>"; };
 		6B2E6C38595C02618A844A6D /* Pods-The Weather App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Weather App.debug.xcconfig"; path = "Target Support Files/Pods-The Weather App/Pods-The Weather App.debug.xcconfig"; sourceTree = "<group>"; };
 		84D2D19E700AE5E9AA37F21B /* Pods-The Weather App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Weather App.release.xcconfig"; path = "Target Support Files/Pods-The Weather App/Pods-The Weather App.release.xcconfig"; sourceTree = "<group>"; };
 		E6CCD15A51A59DB5712FBFBD /* Pods_The_Weather_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Weather_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +203,8 @@
 			children = (
 				486F91D9291EA2A400B53ED9 /* Assets.xcassets */,
 				486F9222291FFCE900B53ED9 /* Theme */,
+				48AD95CA292005FC00F7035F /* Fonts */,
+				48AD95D72920060D00F7035F /* JSONAnimations */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -311,6 +325,26 @@
 			children = (
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		48AD95CA292005FC00F7035F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				48AD95CB292005FC00F7035F /* Open Sans Semibold.ttf */,
+				48AD95CC292005FC00F7035F /* Open Sans Light.ttf */,
+				48AD95CD292005FC00F7035F /* Open Sans Bold.ttf */,
+				48AD95CE292005FC00F7035F /* Circular.ttf */,
+				48AD95CF292005FC00F7035F /* Open Sans Extrabold.ttf */,
+				48AD95D0292005FC00F7035F /* Open Sans Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		48AD95D72920060D00F7035F /* JSONAnimations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JSONAnimations;
 			sourceTree = "<group>";
 		};
 		AE24C0F99153E056907FC963 /* Frameworks */ = {
@@ -436,9 +470,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48AD95D1292005FC00F7035F /* Open Sans Semibold.ttf in Resources */,
 				486F9225291FFDA900B53ED9 /* Colors.xcassets in Resources */,
+				48AD95D2292005FC00F7035F /* Open Sans Light.ttf in Resources */,
+				48AD95D6292005FC00F7035F /* Open Sans Regular.ttf in Resources */,
 				486F91DD291EA2A400B53ED9 /* LaunchScreen.storyboard in Resources */,
+				48AD95D3292005FC00F7035F /* Open Sans Bold.ttf in Resources */,
 				486F91DA291EA2A400B53ED9 /* Assets.xcassets in Resources */,
+				48AD95D4292005FC00F7035F /* Circular.ttf in Resources */,
+				48AD95D5292005FC00F7035F /* Open Sans Extrabold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

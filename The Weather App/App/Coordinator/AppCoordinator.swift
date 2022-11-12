@@ -26,13 +26,16 @@ class AppCoordinator {
     }
     
     func presentSplashAnimationController() {
-        let splashAnimationController: SplashAnimationController = SplashAnimationController()
+        let splashAnimationController: SplashAnimationController = SplashAnimationController("splash_animation")
         let navigationController = UINavigationController(rootViewController: splashAnimationController)
-        window?.rootViewController = splashAnimationController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     
     func presentHome() {
-        
+        let homeController: HomeController = HomeController()
+        let navigationController = UINavigationController(rootViewController: homeController)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
 }

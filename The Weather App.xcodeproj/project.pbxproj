@@ -37,6 +37,8 @@
 		48AD95D4292005FC00F7035F /* Circular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95CE292005FC00F7035F /* Circular.ttf */; };
 		48AD95D5292005FC00F7035F /* Open Sans Extrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95CF292005FC00F7035F /* Open Sans Extrabold.ttf */; };
 		48AD95D6292005FC00F7035F /* Open Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95D0292005FC00F7035F /* Open Sans Regular.ttf */; };
+		48AD95DA2920398600F7035F /* splash_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95D92920398600F7035F /* splash_animation.json */; };
+		48AD95DD29203A9900F7035F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95DC29203A9900F7035F /* HomeController.swift */; };
 		D0F1D490A48A7C1F03BE63DC /* Pods_The_Weather_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CCD15A51A59DB5712FBFBD /* Pods_The_Weather_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,8 @@
 		48AD95CE292005FC00F7035F /* Circular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Circular.ttf; sourceTree = "<group>"; };
 		48AD95CF292005FC00F7035F /* Open Sans Extrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Extrabold.ttf"; sourceTree = "<group>"; };
 		48AD95D0292005FC00F7035F /* Open Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Regular.ttf"; sourceTree = "<group>"; };
+		48AD95D92920398600F7035F /* splash_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash_animation.json; sourceTree = "<group>"; };
+		48AD95DC29203A9900F7035F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		6B2E6C38595C02618A844A6D /* Pods-The Weather App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Weather App.debug.xcconfig"; path = "Target Support Files/Pods-The Weather App/Pods-The Weather App.debug.xcconfig"; sourceTree = "<group>"; };
 		84D2D19E700AE5E9AA37F21B /* Pods-The Weather App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Weather App.release.xcconfig"; path = "Target Support Files/Pods-The Weather App/Pods-The Weather App.release.xcconfig"; sourceTree = "<group>"; };
 		E6CCD15A51A59DB5712FBFBD /* Pods_The_Weather_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Weather_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,7 +208,6 @@
 				486F91D9291EA2A400B53ED9 /* Assets.xcassets */,
 				486F9222291FFCE900B53ED9 /* Theme */,
 				48AD95CA292005FC00F7035F /* Fonts */,
-				48AD95D72920060D00F7035F /* JSONAnimations */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			children = (
 				486F921A291FE8EB00B53ED9 /* Coordinator */,
 				486F9217291FD8EC00B53ED9 /* List */,
+				48AD95D82920372C00F7035F /* Sources */,
 			);
 			path = "Splash Animation";
 			sourceTree = "<group>";
@@ -323,6 +327,7 @@
 		486F9228292002B300B53ED9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				48AD95DB29203A8200F7035F /* List */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -340,11 +345,20 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		48AD95D72920060D00F7035F /* JSONAnimations */ = {
+		48AD95D82920372C00F7035F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				48AD95D92920398600F7035F /* splash_animation.json */,
 			);
-			path = JSONAnimations;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		48AD95DB29203A8200F7035F /* List */ = {
+			isa = PBXGroup;
+			children = (
+				48AD95DC29203A9900F7035F /* HomeController.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 		AE24C0F99153E056907FC963 /* Frameworks */ = {
@@ -471,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48AD95D1292005FC00F7035F /* Open Sans Semibold.ttf in Resources */,
+				48AD95DA2920398600F7035F /* splash_animation.json in Resources */,
 				486F9225291FFDA900B53ED9 /* Colors.xcassets in Resources */,
 				48AD95D2292005FC00F7035F /* Open Sans Light.ttf in Resources */,
 				48AD95D6292005FC00F7035F /* Open Sans Regular.ttf in Resources */,
@@ -562,6 +577,7 @@
 				486F921C291FE90900B53ED9 /* SplashAnimationCoordinatorProtocol.swift in Sources */,
 				48AD95B9292003CE00F7035F /* UIImageView.swift in Sources */,
 				48AD95BB2920040800F7035F /* UIView.swift in Sources */,
+				48AD95DD29203A9900F7035F /* HomeController.swift in Sources */,
 				486F9213291FD6AE00B53ED9 /* APIResponseObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,7 +2,7 @@
 //  ModalWeatherCollectionViewCell.swift
 //  The Weather App
 //
-//  Created by  Qendrim Mjeku on 13.11.22.
+//  Created by Qendrim Mjeku on 13.11.22.
 //
 
 import UIKit
@@ -14,8 +14,8 @@ class ModalWeatherCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = UIFont(name: "OpenSans-Bold", size: 16)
-        label.textColor = Theme.titleLabelColor
+        label.font = UIFont(name: "OpenSans-Semibold", size: 18)
+        label.textColor = Theme.descriptionLabelColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

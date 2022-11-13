@@ -79,7 +79,7 @@ class ModalWeatherController:
             static let weatherCell: String = "CellConstants.CollectionViewIdentifire.weatherCell"
         }
         
-        static var cellWidth: CGFloat = 65
+        static var cellWidth: CGFloat = 68.5
         static let cellHeight: CGFloat = 150
         
         static let cellUIEdgeInsetsTop: CGFloat = 10
@@ -89,7 +89,7 @@ class ModalWeatherController:
     }
     
     private let model: APIResponseObject.WeatherDataResponse
-    private var collectionViewItems: [String] = []
+    private var collectionViewItems: [ModalWeatherModel] = []
     
     // MARK: - Lifecycle
     init(_ model: APIResponseObject.WeatherDataResponse) {
@@ -160,10 +160,10 @@ class ModalWeatherController:
     }
     
     private func setupContent() {
-        collectionViewItems.append("")
-        collectionViewItems.append("")
-        collectionViewItems.append("")
-        collectionViewItems.append("")
+        collectionViewItems.append(ModalWeatherModel(weekday: "MON", currentWeatherImageName: "partly_cloudy", maxAndMinTemperature: "12° 8°"))
+        collectionViewItems.append(ModalWeatherModel(weekday: "TUE", currentWeatherImageName: "partly_cloudy", maxAndMinTemperature: "12° 8°"))
+        collectionViewItems.append(ModalWeatherModel(weekday: "WED", currentWeatherImageName: "partly_cloudy", maxAndMinTemperature: "12° 8°"))
+        collectionViewItems.append(ModalWeatherModel(weekday: "THU", currentWeatherImageName: "partly_cloudy", maxAndMinTemperature: "12° 8°"))
         updateViews()
     }
     
@@ -238,9 +238,9 @@ class ModalWeatherController:
         
         let model = collectionViewItems[indexPath.row]
         cell.configureCell(
-            weekdayString: "TUE",
-            currentWeatherImageNameString: "partly_cloudy",
-            maxAndMinTemperatureString: "12° 8°"
+            weekdayString: model.weekday,
+            currentWeatherImageNameString: model.currentWeatherImageName,
+            maxAndMinTemperatureString: model.maxAndMinTemperature
         )
     
         return cell
@@ -271,4 +271,5 @@ class ModalWeatherController:
             right: ControllerConstants.cellUIEdgeInsetsRight
         )
     }
+    
 }

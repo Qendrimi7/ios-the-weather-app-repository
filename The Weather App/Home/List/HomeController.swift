@@ -249,7 +249,9 @@ class HomeController:
         _ cell: CurrentWeatherTableViewCell,
         didSelectItem model: APIResponseObject.WeatherDataResponse
     ) {
-        print(model)
+        let modalViewController: ModalWeatherController = ModalWeatherController(model)
+        modalViewController.loadViewIfNeeded()
+        present(modalViewController, animated: true)
     }
     
 }

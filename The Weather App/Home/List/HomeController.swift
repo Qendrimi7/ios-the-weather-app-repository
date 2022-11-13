@@ -11,7 +11,8 @@ import Alamofire
 class HomeController:
     UIViewController,
     UITableViewDelegate,
-    UITableViewDataSource {
+    UITableViewDataSource,
+    CurrentWeatherTableViewCellDelegate {
 
     // MARK: - Subviews
     private lazy var tableView: UITableView = {
@@ -219,11 +220,13 @@ class HomeController:
 
         let model = viewModel.section(at: indexPath.section)
         cell.configureCell(
+            weatherDataResponse: model,
             weekdayString: viewModel.getDayName(interval: model.dt),
             countryAndCityString: model.name,
             currentWeatherImageString: viewModel.getImageTemperatureName(model: model.weather?.first),
             maxTemperatureString: viewModel.getTempMax(model: model.main)
         )
+        cell.delegate = self
         
        return cell
     }
@@ -239,6 +242,14 @@ class HomeController:
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
+    }
+    
+    // MARK: - CurrentWeatherTableViewCellDelegate
+    func currentWeatherTableViewCell(
+        _ cell: CurrentWeatherTableViewCell,
+        didSelectItem model: APIResponseObject.WeatherDataResponse
+    ) {
+        print(model)
     }
     
 }

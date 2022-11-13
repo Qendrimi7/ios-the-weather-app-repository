@@ -7,6 +7,15 @@
 
 import UIKit
 
+protocol CurrentWeatherTableViewCellDelegate: AnyObject {
+    
+    func currentWeatherTableViewCell(
+        _ cell: CurrentWeatherTableViewCell,
+        didSelectItem model: APIResponseObject.WeatherDataResponse
+    )
+    
+}
+
 class CurrentWeatherTableViewCell: UITableViewCell {
 
     // MARK: - Subviews
@@ -47,6 +56,9 @@ class CurrentWeatherTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private var model: APIResponseObject.WeatherDataResponse?
+    weak var delegate: CurrentWeatherTableViewCellDelegate?
     
     // MARK: - Lifecycle
     override init(
@@ -101,19 +113,32 @@ class CurrentWeatherTableViewCell: UITableViewCell {
         maxTemperatureLabel.centerHorizontal(equalTo: currentWeatherImageView.centerXAnchor)
         maxTemperatureLabel.bottomAnchor(equalTo: bottomAnchor, constant: 16)
         countryAndCityLabel.centerVertical(equalTo: maxTemperatureLabel.centerYAnchor)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action:  #selector(presentModal))
+        currentWeatherImageView.addGestureRecognizer(tapGesture)
+        
+        selectionStyle = .none
     }
     
     // MARK: - Configure cell
     func configureCell(
+        weatherDataResponse: APIResponseObject.WeatherDataResponse,
         weekdayString: String?,
         countryAndCityString: String?,
         currentWeatherImageString: String,
         maxTemperatureString: String?
     ) {
+        model = weatherDataResponse
         weekdayLabel.text = weekdayString
         countryAndCityLabel.text = countryAndCityString
         currentWeatherImageView.image = UIImage(named: currentWeatherImageString)
         maxTemperatureLabel.text = maxTemperatureString
+    }
+    
+    @objc
+    private func presentModal(sender : UITapGestureRecognizer)  {
+        guard let unwrappedModel = model else { return }
+        delegate?.currentWeatherTableViewCell(self, didSelectItem: unwrappedModel)
     }
     
 }

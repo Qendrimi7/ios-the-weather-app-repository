@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeController:
     UIViewController,
@@ -31,13 +32,6 @@ class HomeController:
     }()
     
     // MARK: - Data
-    private lazy var operationQueue: OperationQueue = {
-        var queue = OperationQueue()
-        queue.name = "Get weather data"
-        queue.maxConcurrentOperationCount = 1
-        return queue
-    }()
-    
     private struct ControllerConstants {
         static let defaultTableViewRowHeight: CGFloat = 200
         
@@ -66,7 +60,25 @@ class HomeController:
     private func setup() {
         setupCoordinator()
         setupViews()
-        getHomeContent()
+        Task {
+            let getHomeContentResponse = await getHomeContent(
+                alamofireParametersConvertible:
+                    APIRequestObject.GetWeatherData(
+                        lat: 42.6026,
+                        lon: 20.9030,
+                        appid: "7113867439c2da0f9bdce128003d8e02"
+                    ),
+                otherHeaders: [:]
+            )
+            
+            switch getHomeContentResponse {
+            case .failure(let error):
+                break
+                
+            case .success(let response):
+                print(response)
+            }
+        }
     }
     
     // MARK: - Setup coordinator
@@ -96,38 +108,29 @@ class HomeController:
         tableView.reloadData()
     }
     
-    private func getHomeContent() {
-        let operation = GetHomeContentOperation(apiRequestObject: APIRequestObject.GetWeatherData(
-            lat: 42.6026,
-            lon: 20.9030,
-            appid: "7113867439c2da0f9bdce128003d8e02"
-        ))
-        
-        var backgroundTask: UIBackgroundTaskIdentifier!
-        
-        backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
-            operation.cancel()
-        })
-        
-        operation.completionBlock = {
-            UIApplication.shared.endBackgroundTask(backgroundTask)
-            
-            guard let result = operation.result else { return }
-            
-            switch result {
-            case .failure(let error):
-                DispatchQueue.main.async { [weak self] in
-                    self?.showAlertWithMessage(title: "Error", message: error.localizedDescription)
-                }
-                
-            case .success(let model):
-                DispatchQueue.main.async { [weak self] in
-                    print(model)
+    private func getHomeContent(
+        alamofireParametersConvertible: AlamofireParametersConvertible,
+        otherHeaders: HTTPHeaders
+    ) async -> Swift.Result<APIResponseObject.WeatherDataResponse, Error> {
+        do {
+            return try await withCheckedThrowingContinuation { continuation in
+                HomeAPI.getHomeContent(
+                    alamofireParametersConvertible: alamofireParametersConvertible,
+                    otherHeaders: otherHeaders
+                ) { (dataResponse, result) in
+                    switch result {
+                    case .failure(let error):
+                        continuation.resume(throwing: error)
+                        
+                    case .success(let responseModel):
+                        continuation.resume(returning: .success(responseModel))
+                    }
                 }
             }
+            
+        } catch {
+            return .failure(error)
         }
-        
-        operationQueue.addOperation(operation)
     }
     
     // MARK: - UITableViewDelegate, UITableViewDataSource

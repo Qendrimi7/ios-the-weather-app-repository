@@ -25,6 +25,7 @@
 		486F921E291FE93E00B53ED9 /* SplashAnimationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F921D291FE93E00B53ED9 /* SplashAnimationCoordinator.swift */; };
 		486F9225291FFDA900B53ED9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 486F9223291FFDA900B53ED9 /* Colors.xcassets */; };
 		486F9226291FFDA900B53ED9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9224291FFDA900B53ED9 /* Theme.swift */; };
+		48AB04CD29218FF0000D306B /* ModalWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04CC29218FF0000D306B /* ModalWeatherCollectionViewCell.swift */; };
 		48AD95B12920035400F7035F /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B02920035400F7035F /* UIView+Constraint.swift */; };
 		48AD95B32920038100F7035F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B22920038100F7035F /* UIViewController.swift */; };
 		48AD95B52920039C00F7035F /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B42920039C00F7035F /* EmptyStateView.swift */; };
@@ -94,6 +95,7 @@
 		486F9221291FEAC000B53ED9 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		486F9223291FFDA900B53ED9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		486F9224291FFDA900B53ED9 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		48AB04CC29218FF0000D306B /* ModalWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		48AD95B02920035400F7035F /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
 		48AD95B22920038100F7035F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		48AD95B42920039C00F7035F /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				486F9201291FCF1300B53ED9 /* Launch */,
 				486F9216291FD8DE00B53ED9 /* Splash Animation */,
 				486F9228292002B300B53ED9 /* Home */,
+				48AD960329218EB000F7035F /* Modal */,
 				486F9227292002A500B53ED9 /* Util */,
 				486F9202291FCF4500B53ED9 /* Resources */,
 				486F91DE291EA2A400B53ED9 /* Info.plist */,
@@ -381,7 +384,6 @@
 			isa = PBXGroup;
 			children = (
 				48AD95DC29203A9900F7035F /* HomeController.swift */,
-				48AD95F82921712300F7035F /* ModalWeatherController.swift */,
 				48AD95DE2920441A00F7035F /* HomeViewModel.swift */,
 				48AD95E02920478400F7035F /* CurrentWeatherTableViewCell.swift */,
 			);
@@ -446,6 +448,15 @@
 				48AD95FE29217C8600F7035F /* The Weather App-Bridging-Header.h */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		48AD960329218EB000F7035F /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				48AD95F82921712300F7035F /* ModalWeatherController.swift */,
+				48AB04CC29218FF0000D306B /* ModalWeatherCollectionViewCell.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 		AE24C0F99153E056907FC963 /* Frameworks */ = {
@@ -649,6 +660,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48AD95F92921712300F7035F /* ModalWeatherController.swift in Sources */,
+				48AB04CD29218FF0000D306B /* ModalWeatherCollectionViewCell.swift in Sources */,
 				48AD95B32920038100F7035F /* UIViewController.swift in Sources */,
 				486F9215291FD6EF00B53ED9 /* AlamofireParametersConvertible.swift in Sources */,
 				486F9208291FD55600B53ED9 /* AppCoordinator.swift in Sources */,

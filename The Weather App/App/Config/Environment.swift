@@ -13,10 +13,10 @@ enum Environment {
     
     static let dictionary: [Environment : [EnvironmentURLKey : URL]] = [
         Environment.debug: [
-            EnvironmentURLKey.API_BASE_URL:            URL(string: "https://openweathermap.org/api")!,
+            EnvironmentURLKey.API_BASE_URL:            URL(string: "https://api.openweathermap.org/data/2.5")!,
         ],
         Environment.release: [
-            EnvironmentURLKey.API_BASE_URL:            URL(string: "https://openweathermap.org/api")!,
+            EnvironmentURLKey.API_BASE_URL:            URL(string: "https://api.openweathermap.org/data/2.5")!,
         ]
     ]
 }

@@ -14,11 +14,8 @@ class CurrentWeatherTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = .systemFont(
-            ofSize: 18,
-            weight: .semibold
-        )
-        label.textColor = .black
+        label.font = UIFont(name: "OpenSans-Bold", size: 35)
+        label.textColor = Theme.titleLabelColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -27,11 +24,8 @@ class CurrentWeatherTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = .systemFont(
-            ofSize: 18,
-            weight: .semibold
-        )
-        label.textColor = .black
+        label.font = UIFont(name: "OpenSans-Semibold", size: 16)
+        label.textColor = Theme.descriptionLabelColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,11 +42,8 @@ class CurrentWeatherTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.font = .systemFont(
-            ofSize: 18,
-            weight: .semibold
-        )
-        label.textColor = .black
+        label.font = UIFont(name: "OpenSans-Semibold", size: 18)
+        label.textColor = Theme.secondaryColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -88,28 +79,28 @@ class CurrentWeatherTableViewCell: UITableViewCell {
     // MARK: - Setup views
     private func setupViews() {
         contentView.addSubview(weekdayLabel)
-        weekdayLabel.leadingAnchor(equalTo: leadingAnchor, constant: 16)
-        weekdayLabel.topAnchor(equalTo: topAnchor, constant: 16)
+        weekdayLabel.leadingAnchor(equalTo: leadingAnchor, constant: 20)
         weekdayLabel.heightAnchor(constant: 50)
         
         contentView.addSubview(countryAndCityLabel)
-        countryAndCityLabel.leadingAnchor(equalTo: leadingAnchor, constant: 16)
-        countryAndCityLabel.topAnchor(equalTo: weekdayLabel.bottomAnchor, constant: 8)
+        countryAndCityLabel.leadingAnchor(equalTo: leadingAnchor, constant: 20)
+        countryAndCityLabel.topAnchor(equalTo: weekdayLabel.bottomAnchor, constant: 10)
         countryAndCityLabel.heightAnchor(constant: 25)
-        countryAndCityLabel.bottomAnchor(equalTo: bottomAnchor, constant: 16)
 
         contentView.addSubview(currentWeatherImageView)
-        currentWeatherImageView.trailingAnchor(equalTo: trailingAnchor, constant: 16)
-        currentWeatherImageView.topAnchor(equalTo: topAnchor, constant: 16)
-        currentWeatherImageView.widthAnchor(constant: 50)
-        currentWeatherImageView.heightAnchor(constant: 50)
+        weekdayLabel.centerVertical(equalTo: currentWeatherImageView.centerYAnchor)
+        currentWeatherImageView.trailingAnchor(equalTo: trailingAnchor, constant: 30)
+        currentWeatherImageView.topAnchor(equalTo: topAnchor, constant: 20)
+        currentWeatherImageView.widthAnchor(constant: 30)
+        currentWeatherImageView.heightAnchor(constant: 30)
         
         contentView.addSubview(maxTemperatureLabel)
-        maxTemperatureLabel.trailingAnchor(equalTo: trailingAnchor, constant: 16)
-        maxTemperatureLabel.topAnchor(equalTo: currentWeatherImageView.bottomAnchor, constant: 8)
+        maxTemperatureLabel.topAnchor(equalTo: currentWeatherImageView.bottomAnchor, constant: 4)
         maxTemperatureLabel.widthAnchor(constant: 50)
         maxTemperatureLabel.heightAnchor(constant: 25)
+        maxTemperatureLabel.centerHorizontal(equalTo: currentWeatherImageView.centerXAnchor)
         maxTemperatureLabel.bottomAnchor(equalTo: bottomAnchor, constant: 16)
+        countryAndCityLabel.centerVertical(equalTo: maxTemperatureLabel.centerYAnchor)
     }
     
     // MARK: - Configure cell

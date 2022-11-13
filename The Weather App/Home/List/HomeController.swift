@@ -45,7 +45,7 @@ class HomeController:
         struct TableViewIdentifires {
             static let currentWeatherCell: String = "ControllerConstants.TableViewIdentifire.currentWeatherCell"
         }
-        static let defaultTableViewRowHeight: CGFloat = 100
+        static let defaultTableViewRowHeight: CGFloat = 125
         
     }
     
@@ -225,9 +225,9 @@ class HomeController:
             maxTemperatureString: viewModel.getTempMax(model: model.main)
         )
         
-       return UITableViewCell()
-        
+       return cell
     }
+    
     func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath

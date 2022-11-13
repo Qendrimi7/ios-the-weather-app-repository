@@ -25,6 +25,7 @@ class HomeController:
         tableView.isUserInteractionEnabled = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .white
+        tableView.separatorColor = .clear
         tableView.register(
             CurrentWeatherTableViewCell.self,
             forCellReuseIdentifier: ControllerConstants.TableViewIdentifires.currentWeatherCell
@@ -65,6 +66,7 @@ class HomeController:
     
     // MARK: - Setup
     private func setup() {
+        setupNavigationAppearance()
         setupCoordinator()
         setupViews()
         Task {
@@ -101,6 +103,14 @@ class HomeController:
     private func setupCoordinator() {
         guard let navigationController = navigationController else { return }
         coordinator = HomeCoordinator(presenter: navigationController)
+    }
+    
+    // MARK: - Setup Navigation Appearance
+    private func setupNavigationAppearance() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = .white
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
     }
     
     // MARK: - Setup views

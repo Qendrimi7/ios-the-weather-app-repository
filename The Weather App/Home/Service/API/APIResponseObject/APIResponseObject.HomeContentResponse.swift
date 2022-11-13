@@ -19,7 +19,7 @@ extension APIResponseObject {
         let wind: Wind?
         let rain: Rain?
         let clouds: Clouds?
-        let dt: Int?
+        let dt: TimeInterval
         let sys: Sys?
         let timezone, id: Int?
         let name: String?

@@ -18,7 +18,7 @@ class CurrentWeatherTableViewCell: UITableViewCell {
             ofSize: 18,
             weight: .semibold
         )
-        label.textColor = .white
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -31,7 +31,7 @@ class CurrentWeatherTableViewCell: UITableViewCell {
             ofSize: 18,
             weight: .semibold
         )
-        label.textColor = .white
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -52,7 +52,7 @@ class CurrentWeatherTableViewCell: UITableViewCell {
             ofSize: 18,
             weight: .semibold
         )
-        label.textColor = .white
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -114,14 +114,14 @@ class CurrentWeatherTableViewCell: UITableViewCell {
     
     // MARK: - Configure cell
     func configureCell(
-        weekdayString: String,
-        countryAndCityString: String,
-        currentWeatherImageURLString: String,
-        maxTemperatureString: String
+        weekdayString: String?,
+        countryAndCityString: String?,
+        currentWeatherImageString: String,
+        maxTemperatureString: String?
     ) {
         weekdayLabel.text = weekdayString
         countryAndCityLabel.text = countryAndCityString
-        currentWeatherImageView.sd_setImage(with: URL(string: currentWeatherImageURLString))
+        currentWeatherImageView.image = UIImage(named: currentWeatherImageString)
         maxTemperatureLabel.text = maxTemperatureString
     }
     

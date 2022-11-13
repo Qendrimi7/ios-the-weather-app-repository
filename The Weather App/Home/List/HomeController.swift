@@ -15,12 +15,20 @@ class HomeController:
 
     // MARK: - Subviews
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
-        tableView.separatorStyle = .none
+        let tableView: UITableView
+
+        tableView = UITableView(frame: .zero, style: .plain)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: CGFloat.leastNonzeroMagnitude))
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: CGFloat.leastNonzeroMagnitude))
+        tableView.estimatedRowHeight = 44
         tableView.allowsSelection = true
-        tableView.backgroundColor = Theme.appTintColor
         tableView.isUserInteractionEnabled = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .white
+        tableView.register(
+            CurrentWeatherTableViewCell.self,
+            forCellReuseIdentifier: ControllerConstants.TableViewIdentifires.currentWeatherCell
+        )
         return tableView
     }()
     
@@ -33,7 +41,10 @@ class HomeController:
     
     // MARK: - Data
     private struct ControllerConstants {
-        static let defaultTableViewRowHeight: CGFloat = 200
+        struct TableViewIdentifires {
+            static let currentWeatherCell: String = "ControllerConstants.TableViewIdentifire.currentWeatherCell"
+        }
+        static let defaultTableViewRowHeight: CGFloat = 100
         
     }
     
@@ -44,11 +55,7 @@ class HomeController:
     
     private var coordinator: HomeCoordinator!
     private var viewModel: HomeViewModel = HomeViewModel()
-    
-    // MARK: - Lifecycle
-    deinit {
-        operationQueue.cancelAllOperations()
-    }
+    private var dataLoadingStatus: DataLoadingStatus = .loaded(nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,10 +80,19 @@ class HomeController:
             
             switch getHomeContentResponse {
             case .failure(let error):
-                break
+                DispatchQueue.main.async { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.dataLoadingStatus = .loaded(error)
+                    strongSelf.updateViews()
+                }
                 
             case .success(let response):
-                print(response)
+                DispatchQueue.main.async { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.dataLoadingStatus = .loaded(nil)
+                    strongSelf.viewModel.appendSections(response: [response])
+                    strongSelf.updateViews()
+                }
             }
         }
     }
@@ -101,10 +117,47 @@ class HomeController:
         tableView.delegate = self
         tableView.dataSource = self
         setupBackButton()
+        
+        view.addSubview(spinnerView)
+        spinnerView
+            .leadingAnchor(equalTo: view.leadingAnchor)
+            .topAnchor(equalTo: view.topAnchor)
+            .trailingAnchor(equalTo: view.trailingAnchor)
+            .bottomAnchor(equalTo: view.bottomAnchor)
     }
     
     // MARK: - Update views
     private func updateViews() {
+        switch dataLoadingStatus {
+        case .loading(let isFirstTime):
+            if isFirstTime {
+                spinnerView.startAnimating()
+            }
+            tableView.setEmptyView(nil)
+            
+        case .loaded(let error):
+            spinnerView.stopAnimating()
+            tableView.setEmptyView(nil)
+            
+            if let error = error {
+                switch error {
+                case URLError.Code.notConnectedToInternet:
+                    tableView.setEmptyView(EmptyStateView(
+                        image: nil,
+                        title: "Internet Connection",
+                        description: NSAttributedString(string: "Not connected to Internet"))
+                    )
+                    
+                default:
+                    tableView.setEmptyView(EmptyStateView(
+                        image: nil,
+                        title: "Error",
+                        description: NSAttributedString(string: error.localizedDescription))
+                    )
+                }
+                
+            }
+        }
         tableView.reloadData()
     }
     
@@ -135,20 +188,33 @@ class HomeController:
     
     // MARK: - UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return viewModel.sectionsCount()
     }
     
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 1
+        return viewModel.numberOfRowsInSection()
     }
     
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: ControllerConstants.TableViewIdentifires.currentWeatherCell,
+            for: indexPath
+        ) as! CurrentWeatherTableViewCell
+
+        let model = viewModel.section(at: indexPath.section)
+        cell.configureCell(
+            weekdayString: viewModel.getDayName(interval: model.dt),
+            countryAndCityString: model.name,
+            currentWeatherImageString: viewModel.getImageTemperatureName(model: model.weather?.first),
+            maxTemperatureString: viewModel.getTempMax(model: model.main)
+        )
+        
        return UITableViewCell()
         
     }

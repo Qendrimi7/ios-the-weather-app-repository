@@ -9,6 +9,9 @@ import UIKit
 
 class ModalWeatherController:
     UIViewController,
+    UICollectionViewDelegate,
+    UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout,
     UIViewControllerTransitioningDelegate {
     
     // MARK: - Subviews
@@ -47,7 +50,46 @@ class ModalWeatherController:
         return view
     }()
     
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = UIScreen.main.bounds.width * 0.05
+        layout.minimumInteritemSpacing = UIScreen.main.bounds.width * 0.05
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
+        collectionView.register(
+            ModalWeatherCollectionViewCell.self,
+            forCellWithReuseIdentifier: ControllerConstants.CollectionViewIdentifire.weatherCell
+        )
+        collectionView.backgroundColor = Theme.appTintColor
+        collectionView.isScrollEnabled = false
+        collectionView.isPagingEnabled = false
+        collectionView.isUserInteractionEnabled = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+    
+    // MARK: - Data
+    private struct ControllerConstants {
+        
+        struct CollectionViewIdentifire {
+            static let weatherCell: String = "CellConstants.CollectionViewIdentifire.weatherCell"
+        }
+        
+        static var cellWidth: CGFloat = 65
+        static let cellHeight: CGFloat = 150
+        
+        static let cellUIEdgeInsetsTop: CGFloat = 10
+        static let cellUIEdgeInsetsLeft: CGFloat = ((UIScreen.main.bounds.width * 0.05) / 2.0)
+        static let cellUIEdgeInsetsBottom: CGFloat = 10
+        static let cellUIEdgeInsetsRight: CGFloat = ((UIScreen.main.bounds.width * 0.05) / 2.0)
+    }
+    
     private let model: APIResponseObject.WeatherDataResponse
+    private var collectionViewItems: [String] = []
     
     // MARK: - Lifecycle
     init(_ model: APIResponseObject.WeatherDataResponse) {
@@ -101,10 +143,32 @@ class ModalWeatherController:
             .trailingAnchor(equalTo: view.trailingAnchor, constant: 25)
             .heightAnchor(constant: 0.5)
     
+        view.addSubview(collectionView)
+        collectionView
+            .leadingAnchor(equalTo: view.leadingAnchor, constant: 20)
+            .topAnchor(equalTo: seperatorView.bottomAnchor, constant: 10)
+            .trailingAnchor(equalTo: view.trailingAnchor, constant: 20)
+            .heightAnchor(constant: 150)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         maxTemperatureLabel.text = getTempMax(model: model.main)
         countryAndCityLabel.text = model.name
         currentWeatherImageView.image = UIImage(named: getImageTemperatureName(model: model.weather?.first))
+        setupContent()
+    }
+    
+    private func setupContent() {
+        collectionViewItems.append("")
+        collectionViewItems.append("")
+        collectionViewItems.append("")
+        collectionViewItems.append("")
+        updateViews()
+    }
+    
+    private func updateViews() {
+        collectionView.reloadData()
     }
     
     func presentationController(
@@ -153,5 +217,58 @@ class ModalWeatherController:
             return "default_icone"
             
         }
+    }
+    
+    // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return collectionViewItems.count
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ControllerConstants.CollectionViewIdentifire.weatherCell,
+            for: indexPath
+        ) as! ModalWeatherCollectionViewCell
+        
+        let model = collectionViewItems[indexPath.row]
+        cell.configureCell(
+            weekdayString: "TUE",
+            currentWeatherImageNameString: "partly_cloudy",
+            maxAndMinTemperatureString: "12° 8°"
+        )
+    
+        return cell
+    }
+    
+    
+    // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(
+            width: ControllerConstants.cellWidth,
+            height: ControllerConstants.cellHeight
+        )
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        return UIEdgeInsets(
+            top: ControllerConstants.cellUIEdgeInsetsTop,
+            left: ControllerConstants.cellUIEdgeInsetsLeft,
+            bottom: ControllerConstants.cellUIEdgeInsetsBottom,
+            right: ControllerConstants.cellUIEdgeInsetsRight
+        )
     }
 }

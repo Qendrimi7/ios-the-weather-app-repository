@@ -69,12 +69,12 @@ class ModalWeatherCollectionViewCell: UICollectionViewCell {
             .leadingAnchor(equalTo: leadingAnchor, constant: 2)
             .topAnchor(equalTo: topAnchor, constant: 2)
             .trailingAnchor(equalTo: trailingAnchor, constant: 2)
-            .heightAnchor(constant: 20)
         
         addSubview(currentWeatherImageView)
         currentWeatherImageView
             .topAnchor(equalTo: weekdayLabel.bottomAnchor, constant: 2)
             .centerHorizontal(equalTo: weekdayLabel.centerXAnchor)
+            .centerVertical(equalTo: centerYAnchor)
             .widthAnchor(constant: 35)
             .heightAnchor(constant: 35)
         
@@ -85,6 +85,16 @@ class ModalWeatherCollectionViewCell: UICollectionViewCell {
             .trailingAnchor(equalTo: trailingAnchor, constant: 2)
             .bottomAnchor(equalTo: bottomAnchor, constant: 2)
             
+    }
+    
+    func configureCell(
+        weekdayString: String,
+        currentWeatherImageNameString: String,
+        maxAndMinTemperatureString: String
+    ) {
+        weekdayLabel.text = weekdayString
+        currentWeatherImageView.image = UIImage(named: currentWeatherImageNameString)
+        maxAndMinTemperatureLabel.text = maxAndMinTemperatureString
     }
         
 }

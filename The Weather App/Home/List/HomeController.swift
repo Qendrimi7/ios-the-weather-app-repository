@@ -73,6 +73,8 @@ class HomeController:
         setupCoordinator()
         setupViews()
         addObserver()
+        dataLoadingStatus = .loading(true)
+        updateViews()
         LocationManager.shared.requestAlwaysAuthorization()
         LocationManager.shared.requestWhenInUseAuthorization()
     }

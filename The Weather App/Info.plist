@@ -4,6 +4,15 @@
 <dict>
 	<key>API_KEY_FOR_OPENWEATHERMAP</key>
 	<string>$(API_KEY_FOR_OPENWEATHERMAP)</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Open Sans Semibold.ttf</string>
+		<string>Open Sans Light.ttf</string>
+		<string>Open Sans Bold.ttf</string>
+		<string>Circular.ttf</string>
+		<string>Open Sans Extrabold.ttf</string>
+		<string>Open Sans Regular.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -21,5 +30,11 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Used to locate your location and to present weather for you</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Used to locate your location and to present weather for you</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Used to locate your location and to present weather for you</string>
 </dict>
 </plist>

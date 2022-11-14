@@ -153,9 +153,9 @@ class ModalWeatherController:
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        maxTemperatureLabel.text = getTempMax(model: model.main)
-        countryAndCityLabel.text = model.name
-        currentWeatherImageView.image = UIImage(named: getImageTemperatureName(model: model.weather?.first))
+//        maxTemperatureLabel.text = getTempMax(model: model.main)
+//        countryAndCityLabel.text = model.name
+//        currentWeatherImageView.image = UIImage(named: getImageTemperatureName(model: model.weather?.first))
         setupContent()
     }
     

@@ -13,8 +13,10 @@ extension APIRequestObject {
         let lat: Double
         let lon: Double
         let appid: String
-        var exclude: String? = nil /// - current, minutely, hourly, daily, alerts
+        var mode: String? = nil    /// - Response format. JSON format is used by default. To get data in XML format use mode=xml.
+        var cnt: Int? = nil        /// - A number of timestamps, which will be returned in the API response.
         var units: String? = nil   /// - standard, metric, imperial
+        var lang: String? = nil
     }
 }
 

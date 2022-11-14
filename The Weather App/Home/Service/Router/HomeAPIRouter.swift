@@ -28,7 +28,7 @@ enum HomeAPIRouter: URLRequestConvertible {
             alamofireParametersConvertible: _,
             otherHeaders: _
         ):
-            return Environment[.API_BASE_URL].appendingPathComponent("weather")
+            return Environment[.API_BASE_URL].appendingPathComponent("forecast")
         }
     }
     

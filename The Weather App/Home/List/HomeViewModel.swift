@@ -22,6 +22,7 @@ struct HomeViewModel {
         }
     }
     
+    
     func sectionsCount() -> Int {
         return sections.count
     }
@@ -38,15 +39,17 @@ struct HomeViewModel {
         return sections.isEmpty
     }
     
-    func getTempMax(model: APIResponseObject.Main?) -> String? {
-        guard let unwrappedModel = model,
+    func getTempMax(model: APIResponseObject.WeatherDataResponse) -> String? {
+        guard let unwrappedFirstItem = model.list?.first,
+              let unwrappedModel = unwrappedFirstItem.main,
               let unwrappedTempMax = unwrappedModel.tempMax else { return nil }
         
         return "\(Int(unwrappedTempMax - 273.15))°C"
     }
     
-    func getImageTemperatureName(model: APIResponseObject.Weather?) -> String {
-        guard let unwrappedModel = model,
+    func getImageTemperatureName(model: APIResponseObject.WeatherDataResponse) -> String {
+        guard let unwrappedFirstItem = model.list?.first,
+              let unwrappedModel = unwrappedFirstItem.weather?.first,
               let unwrappedID = unwrappedModel.id else { return "default_icone" }
         
         switch unwrappedID {
@@ -71,8 +74,10 @@ struct HomeViewModel {
         }
     }
     
-    func getDayName(interval: TimeInterval) -> String? {
-        let date = Date(timeIntervalSince1970: interval)
+    func getDayName(model: APIResponseObject.WeatherDataResponse) -> String? {
+        guard let unwrappedFirstItem = model.list?.first,
+              let unwrappedInterval = unwrappedFirstItem.dt else { return nil }
+        let date = Date(timeIntervalSince1970: unwrappedInterval)
         let calendar = Calendar.current
         let formatter = RelativeDateTimeFormatter()
         formatter.dateTimeStyle = .named
@@ -94,5 +99,10 @@ struct HomeViewModel {
         }
         
         return nil
+    }
+    
+    func getCountryNameOrCity(model: APIResponseObject.WeatherDataResponse) -> String? {
+        guard let unwrappedCity = model.city else { return nil }
+        return unwrappedCity.name
     }
 }

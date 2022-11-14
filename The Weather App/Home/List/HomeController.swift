@@ -74,9 +74,10 @@ class HomeController:
             let getHomeContentResponse = await getHomeContent(
                 alamofireParametersConvertible:
                     APIRequestObject.GetWeatherData(
-                        lat: 42.6026,
-                        lon: 20.9030,
-                        appid: "7113867439c2da0f9bdce128003d8e02"
+                        lat: 51.1642292,
+                        lon: 10.4541194,
+                        appid: "7113867439c2da0f9bdce128003d8e02",
+                        cnt: 32 /// 4 Days
                     ),
                 otherHeaders: [:]
             )
@@ -221,11 +222,12 @@ class HomeController:
         let model = viewModel.section(at: indexPath.section)
         cell.configureCell(
             weatherDataResponse: model,
-            weekdayString: viewModel.getDayName(interval: model.dt),
-            countryAndCityString: model.name,
-            currentWeatherImageString: viewModel.getImageTemperatureName(model: model.weather?.first),
-            maxTemperatureString: viewModel.getTempMax(model: model.main)
+            weekdayString: viewModel.getDayName(model: model),
+            countryAndCityString: viewModel.getCountryNameOrCity(model: model),
+            currentWeatherImageString: viewModel.getImageTemperatureName(model: model),
+            maxTemperatureString: viewModel.getTempMax(model: model)
         )
+       
         cell.delegate = self
         
        return cell

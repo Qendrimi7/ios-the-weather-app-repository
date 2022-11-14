@@ -229,7 +229,6 @@ class ModalWeatherController:
         return cell
     }
     
-    
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(
         _ collectionView: UICollectionView,

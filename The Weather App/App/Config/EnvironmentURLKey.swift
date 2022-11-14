@@ -9,5 +9,4 @@ import Foundation
 
 enum EnvironmentURLKey {
     case API_BASE_URL
-    case API_IMAGE_BASE_URL
 }

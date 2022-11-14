@@ -18,7 +18,10 @@ class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     // MARK: - Helpers
-    func goToWeatherDetailsController() {
-       
+    func presentModalController(model: APIResponseObject.WeatherDataResponse) {
+        let modalViewController: ModalWeatherController = ModalWeatherController(model)
+        modalViewController.loadViewIfNeeded()
+        presenter.present(modalViewController, animated: true)
     }
+    
 }

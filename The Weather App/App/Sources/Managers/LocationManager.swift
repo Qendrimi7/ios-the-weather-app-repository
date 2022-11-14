@@ -10,6 +10,9 @@ import CoreLocation
 
 final class LocationManager: NSObject {
 
+    /**
+    Returns the default singleton instance.
+    */
     static let shared = LocationManager()
 
     private lazy var locationManager: CLLocationManager = {

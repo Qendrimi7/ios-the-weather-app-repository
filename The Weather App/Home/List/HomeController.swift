@@ -106,7 +106,6 @@ class HomeController:
         
         tableView.delegate = self
         tableView.dataSource = self
-        setupBackButton()
         
         view.addSubview(spinnerView)
         spinnerView
@@ -236,6 +235,8 @@ class HomeController:
                     LocationManager.shared.requestAlwaysAuthorization()
                     
                 case .denied:
+                    self?.dataLoadingStatus = .loaded(nil)
+                    self?.updateViews()
                     self?.tableView.setEmptyView(EmptyStateView(
                         image: nil,
                         title: "Location Services disabled",
@@ -301,10 +302,7 @@ class HomeController:
         _ cell: CurrentWeatherTableViewCell,
         didSelectItem model: APIResponseObject.WeatherDataResponse
     ) {
-        LocationManager.shared.startUpdatingLocation()
-        let modalViewController: ModalWeatherController = ModalWeatherController(model)
-        modalViewController.loadViewIfNeeded()
-        present(modalViewController, animated: true)
+        coordinator.presentModalController(model: model)
     }
     
 }

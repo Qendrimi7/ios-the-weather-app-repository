@@ -30,5 +30,11 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Used to locate your location and to present weather for you</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Used to locate your location and to present weather for you</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Used to locate your location and to present weather for you</string>
 </dict>
 </plist>

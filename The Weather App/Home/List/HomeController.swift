@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import Combine
 
 class HomeController:
     UIViewController,
@@ -58,6 +59,7 @@ class HomeController:
     private var coordinator: HomeCoordinator!
     private var viewModel: HomeViewModel = HomeViewModel()
     private var dataLoadingStatus: DataLoadingStatus = .loaded(nil)
+    private var disposables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,37 +72,9 @@ class HomeController:
         setupNavigationAppearance()
         setupCoordinator()
         setupViews()
-        Task {
-            if let apiKey = Constant.apiKeyForOpenWeatherMap {
-                let getHomeContentResponse = await getHomeContent(
-                    alamofireParametersConvertible:
-                        APIRequestObject.GetWeatherData(
-                            lat: 51.1642292,
-                            lon: 10.4541194,
-                            appid: apiKey,
-                            cnt: 32 /// 4 Days
-                        ),
-                    otherHeaders: [:]
-                )
-                
-                switch getHomeContentResponse {
-                case .failure(let error):
-                    DispatchQueue.main.async { [weak self] in
-                        guard let strongSelf = self else { return }
-                        strongSelf.dataLoadingStatus = .loaded(error)
-                        strongSelf.updateViews()
-                    }
-                    
-                case .success(let response):
-                    DispatchQueue.main.async { [weak self] in
-                        guard let strongSelf = self else { return }
-                        strongSelf.dataLoadingStatus = .loaded(nil)
-                        strongSelf.viewModel.appendSections(response: [response])
-                        strongSelf.updateViews()
-                    }
-                }
-            }
-        }
+        addObserver()
+        LocationManager.shared.requestAlwaysAuthorization()
+        LocationManager.shared.requestWhenInUseAuthorization()
     }
     
     // MARK: - Setup coordinator
@@ -175,6 +149,43 @@ class HomeController:
         tableView.reloadData()
     }
     
+    private func loadData(
+        lat: Double,
+        lon: Double
+    ) {
+        Task {
+            if let apiKey = Constant.apiKeyForOpenWeatherMap {
+                let getHomeContentResponse = await getHomeContent(
+                    alamofireParametersConvertible:
+                        APIRequestObject.GetWeatherData(
+                            lat: lat,
+                            lon: lon,
+                            appid: apiKey,
+                            cnt: 32 /// 4 Days
+                        ),
+                    otherHeaders: [:]
+                )
+                
+                switch getHomeContentResponse {
+                case .failure(let error):
+                    DispatchQueue.main.async { [weak self] in
+                        guard let strongSelf = self else { return }
+                        strongSelf.dataLoadingStatus = .loaded(error)
+                        strongSelf.updateViews()
+                    }
+                    
+                case .success(let response):
+                    DispatchQueue.main.async { [weak self] in
+                        guard let strongSelf = self else { return }
+                        strongSelf.dataLoadingStatus = .loaded(nil)
+                        strongSelf.viewModel.appendSections(response: [response])
+                        strongSelf.updateViews()
+                    }
+                }
+            }
+        }
+    }
+    
     private func getHomeContent(
         alamofireParametersConvertible: AlamofireParametersConvertible,
         otherHeaders: HTTPHeaders
@@ -198,6 +209,41 @@ class HomeController:
         } catch {
             return .failure(error)
         }
+    }
+    
+    private func addObserver() {
+        LocationObserver.didUpdateLocations
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] locations in
+                if let unwrappedFirtLocation = locations.first {
+                    self?.loadData(lat: unwrappedFirtLocation.coordinate.latitude, lon: unwrappedFirtLocation.coordinate.longitude)
+                }
+            }.store(in: &disposables)
+        
+        LocationObserver.didChangeAuthorization
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] status in
+                switch status {
+                case .authorizedAlways,
+                     .authorizedWhenInUse:
+                    LocationManager.shared.requestAlwaysAuthorization()
+                    LocationManager.shared.requestWhenInUseAuthorization()
+                    LocationManager.shared.startUpdatingLocation()
+                    
+                case .notDetermined:
+                    LocationManager.shared.requestAlwaysAuthorization()
+                    
+                case .denied:
+                    self?.tableView.setEmptyView(EmptyStateView(
+                        image: nil,
+                        title: "Location Services disabled",
+                        description: NSAttributedString(string: "Please enable Location Services in Settings, We can't get weather data from openweathermap API without coordinates, Please do it :)"))
+                    )
+                    
+                default:
+                    break
+                }
+            }.store(in: &disposables)
     }
     
     // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -253,6 +299,7 @@ class HomeController:
         _ cell: CurrentWeatherTableViewCell,
         didSelectItem model: APIResponseObject.WeatherDataResponse
     ) {
+        LocationManager.shared.startUpdatingLocation()
         let modalViewController: ModalWeatherController = ModalWeatherController(model)
         modalViewController.loadViewIfNeeded()
         present(modalViewController, animated: true)

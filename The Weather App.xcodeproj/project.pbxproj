@@ -30,6 +30,7 @@
 		48AB04D12921E44A000D306B /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04D02921E44A000D306B /* Array.swift */; };
 		48AB04D32921E8AD000D306B /* ModalWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04D22921E8AD000D306B /* ModalWeatherViewModel.swift */; };
 		48AB04D52921EE5C000D306B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04D42921EE5C000D306B /* Constant.swift */; };
+		48AB04D72921F020000D306B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04D62921F020000D306B /* LocationManager.swift */; };
 		48AD95B12920035400F7035F /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B02920035400F7035F /* UIView+Constraint.swift */; };
 		48AD95B32920038100F7035F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B22920038100F7035F /* UIViewController.swift */; };
 		48AD95B52920039C00F7035F /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B42920039C00F7035F /* EmptyStateView.swift */; };
@@ -104,6 +105,7 @@
 		48AB04D02921E44A000D306B /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		48AB04D22921E8AD000D306B /* ModalWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalWeatherViewModel.swift; sourceTree = "<group>"; };
 		48AB04D42921EE5C000D306B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		48AB04D62921F020000D306B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		48AD95B02920035400F7035F /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
 		48AD95B22920038100F7035F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		48AD95B42920039C00F7035F /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		486F9206291FD4CE00B53ED9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				48AB04D82921F024000D306B /* Managers */,
 				48AD96022921809800F7035F /* Header */,
 				486F920D291FD66F00B53ED9 /* Models */,
 			);
@@ -367,6 +370,14 @@
 				48AD95DB29203A8200F7035F /* List */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		48AB04D82921F024000D306B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				48AB04D62921F020000D306B /* LocationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		48AD95CA292005FC00F7035F /* Fonts */ = {
@@ -689,6 +700,7 @@
 				48AD95E52920555F00F7035F /* HomeCoordinatorProtocol.swift in Sources */,
 				48AD95EF292060C900F7035F /* HomeAPI.swift in Sources */,
 				486F920C291FD5FB00B53ED9 /* EnvironmentURLKey.swift in Sources */,
+				48AB04D72921F020000D306B /* LocationManager.swift in Sources */,
 				48AD95F32920617000F7035F /* APIRequestObject.GetWeatherData.swift in Sources */,
 				48AD95E12920478400F7035F /* CurrentWeatherTableViewCell.swift in Sources */,
 				48AD95F52920678500F7035F /* APIResponseObject.HomeContentResponse.swift in Sources */,
@@ -874,7 +886,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;

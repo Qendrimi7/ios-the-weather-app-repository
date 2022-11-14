@@ -15,11 +15,8 @@ struct HomeViewModel {
     private var numberOfMoviesInCollectionForPage: Int = 20
     
     mutating func appendSections(response: [APIResponseObject.WeatherDataResponse]) {
-        if sections.isEmpty {
-            sections = response
-        } else {
-            sections.append(contentsOf: response)
-        }
+        sections = []
+        sections.append(contentsOf: response)
     }
     
     func sectionsCount() -> Int {

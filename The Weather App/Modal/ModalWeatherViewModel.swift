@@ -62,4 +62,5 @@ struct ModalWeatherViewModel {
         let dayInWeek = dateFormatter.string(from: date)
         return dayInWeek
     }
+    
 }

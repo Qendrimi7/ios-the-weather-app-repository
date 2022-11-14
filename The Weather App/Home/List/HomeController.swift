@@ -106,7 +106,6 @@ class HomeController:
         
         tableView.delegate = self
         tableView.dataSource = self
-        setupBackButton()
         
         view.addSubview(spinnerView)
         spinnerView

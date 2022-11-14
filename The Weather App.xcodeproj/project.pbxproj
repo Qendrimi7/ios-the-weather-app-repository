@@ -31,11 +31,8 @@
 		48AB04D52921EE5C000D306B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04D42921EE5C000D306B /* Constant.swift */; };
 		48AB04D72921F020000D306B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04D62921F020000D306B /* LocationManager.swift */; };
 		48AD95B12920035400F7035F /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B02920035400F7035F /* UIView+Constraint.swift */; };
-		48AD95B32920038100F7035F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B22920038100F7035F /* UIViewController.swift */; };
 		48AD95B52920039C00F7035F /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B42920039C00F7035F /* EmptyStateView.swift */; };
 		48AD95B7292003B300F7035F /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B6292003B300F7035F /* UITableView.swift */; };
-		48AD95B9292003CE00F7035F /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B8292003CE00F7035F /* UIImageView.swift */; };
-		48AD95BB2920040800F7035F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95BA2920040800F7035F /* UIView.swift */; };
 		48AD95D1292005FC00F7035F /* Open Sans Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95CB292005FC00F7035F /* Open Sans Semibold.ttf */; };
 		48AD95D2292005FC00F7035F /* Open Sans Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95CC292005FC00F7035F /* Open Sans Light.ttf */; };
 		48AD95D3292005FC00F7035F /* Open Sans Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48AD95CD292005FC00F7035F /* Open Sans Bold.ttf */; };
@@ -106,11 +103,8 @@
 		48AB04D42921EE5C000D306B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		48AB04D62921F020000D306B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		48AD95B02920035400F7035F /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
-		48AD95B22920038100F7035F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		48AD95B42920039C00F7035F /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		48AD95B6292003B300F7035F /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		48AD95B8292003CE00F7035F /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
-		48AD95BA2920040800F7035F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		48AD95CB292005FC00F7035F /* Open Sans Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Semibold.ttf"; sourceTree = "<group>"; };
 		48AD95CC292005FC00F7035F /* Open Sans Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Light.ttf"; sourceTree = "<group>"; };
 		48AD95CD292005FC00F7035F /* Open Sans Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Open Sans Bold.ttf"; sourceTree = "<group>"; };
@@ -353,11 +347,8 @@
 			children = (
 				48AD95FA292176AE00F7035F /* UISheetPresentationControllerDetent+Private.h */,
 				48AD95B02920035400F7035F /* UIView+Constraint.swift */,
-				48AD95B22920038100F7035F /* UIViewController.swift */,
 				48AD95B42920039C00F7035F /* EmptyStateView.swift */,
 				48AD95B6292003B300F7035F /* UITableView.swift */,
-				48AD95B8292003CE00F7035F /* UIImageView.swift */,
-				48AD95BA2920040800F7035F /* UIView.swift */,
 				48AB04D02921E44A000D306B /* Array.swift */,
 				48AB04D42921EE5C000D306B /* Constant.swift */,
 			);
@@ -688,7 +679,6 @@
 				48AD95F92921712300F7035F /* ModalWeatherController.swift in Sources */,
 				48AB04CD29218FF0000D306B /* ModalWeatherCollectionViewCell.swift in Sources */,
 				48AB04CF2921AA27000D306B /* ModalWeatherModel.swift in Sources */,
-				48AD95B32920038100F7035F /* UIViewController.swift in Sources */,
 				486F9215291FD6EF00B53ED9 /* AlamofireParametersConvertible.swift in Sources */,
 				486F9208291FD55600B53ED9 /* AppCoordinator.swift in Sources */,
 				48AD95DF2920441A00F7035F /* HomeViewModel.swift in Sources */,
@@ -713,8 +703,6 @@
 				48AD95B7292003B300F7035F /* UITableView.swift in Sources */,
 				48AD95ED29205F1100F7035F /* HomeAPIRouter.swift in Sources */,
 				486F921C291FE90900B53ED9 /* SplashAnimationCoordinatorProtocol.swift in Sources */,
-				48AD95B9292003CE00F7035F /* UIImageView.swift in Sources */,
-				48AD95BB2920040800F7035F /* UIView.swift in Sources */,
 				48AD95DD29203A9900F7035F /* HomeController.swift in Sources */,
 				486F9213291FD6AE00B53ED9 /* APIResponseObject.swift in Sources */,
 				48AB04D12921E44A000D306B /* Array.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 struct HomeViewModel {
     
-    var sections: [APIResponseObject.WeatherDataResponse] = []
+    private var sections: [APIResponseObject.WeatherDataResponse] = []
     private var currentPage = 1
     private var numberOfMoviesInCollectionForPage: Int = 20
     

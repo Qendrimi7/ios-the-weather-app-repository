@@ -116,7 +116,6 @@ class CurrentWeatherTableViewCell: UITableViewCell {
         
         let tapGesture = UITapGestureRecognizer(target: self, action:  #selector(presentModal))
         currentWeatherImageView.addGestureRecognizer(tapGesture)
-        
         selectionStyle = .none
     }
     

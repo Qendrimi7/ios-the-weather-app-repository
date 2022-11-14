@@ -28,6 +28,7 @@
 		48AB04CD29218FF0000D306B /* ModalWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04CC29218FF0000D306B /* ModalWeatherCollectionViewCell.swift */; };
 		48AB04CF2921AA27000D306B /* ModalWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04CE2921AA27000D306B /* ModalWeatherModel.swift */; };
 		48AB04D12921E44A000D306B /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04D02921E44A000D306B /* Array.swift */; };
+		48AB04D32921E8AD000D306B /* ModalWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04D22921E8AD000D306B /* ModalWeatherViewModel.swift */; };
 		48AD95B12920035400F7035F /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B02920035400F7035F /* UIView+Constraint.swift */; };
 		48AD95B32920038100F7035F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B22920038100F7035F /* UIViewController.swift */; };
 		48AD95B52920039C00F7035F /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B42920039C00F7035F /* EmptyStateView.swift */; };
@@ -100,6 +101,7 @@
 		48AB04CC29218FF0000D306B /* ModalWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		48AB04CE2921AA27000D306B /* ModalWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalWeatherModel.swift; sourceTree = "<group>"; };
 		48AB04D02921E44A000D306B /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		48AB04D22921E8AD000D306B /* ModalWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalWeatherViewModel.swift; sourceTree = "<group>"; };
 		48AD95B02920035400F7035F /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
 		48AD95B22920038100F7035F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		48AD95B42920039C00F7035F /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				48AD95F82921712300F7035F /* ModalWeatherController.swift */,
+				48AB04D22921E8AD000D306B /* ModalWeatherViewModel.swift */,
 				48AB04CC29218FF0000D306B /* ModalWeatherCollectionViewCell.swift */,
 				48AB04CE2921AA27000D306B /* ModalWeatherModel.swift */,
 			);
@@ -696,6 +699,7 @@
 				48AD95DD29203A9900F7035F /* HomeController.swift in Sources */,
 				486F9213291FD6AE00B53ED9 /* APIResponseObject.swift in Sources */,
 				48AB04D12921E44A000D306B /* Array.swift in Sources */,
+				48AB04D32921E8AD000D306B /* ModalWeatherViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -89,7 +89,7 @@ class ModalWeatherController:
     }
     
     private let model: APIResponseObject.WeatherDataResponse
-    private var collectionViewItems: [ModalWeatherModel] = []
+    private var viewModel: ModalWeatherViewModel = ModalWeatherViewModel()
     
     // MARK: - Lifecycle
     init(_ model: APIResponseObject.WeatherDataResponse) {
@@ -153,9 +153,12 @@ class ModalWeatherController:
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        maxTemperatureLabel.text = getTempMax(model: model)
         countryAndCityLabel.text = getCountryNameOrCity(model: model)
-        currentWeatherImageView.image = UIImage(named: getImageTemperatureName(model: model))
+        if let unwrappedModeList = model.list?.first {
+            maxTemperatureLabel.text = viewModel.getTempMax(model: unwrappedModeList)
+            currentWeatherImageView.image = UIImage(named: viewModel.getImageTemperatureName(model: unwrappedModeList))
+        }
+        
         setupContent()
     }
     
@@ -166,18 +169,11 @@ class ModalWeatherController:
         nextFourDaysWeather.removeFirst()
     
         nextFourDaysWeather.forEach { item in
-
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "EEE"
-            let date = Date(timeIntervalSince1970: item.dt)
-            let dayInWeek = dateFormatter.string(from: date)
-            
-            collectionViewItems.append(
-                ModalWeatherModel(
-                    weekday: dayInWeek,
-                    currentWeatherImageName: getImageTemperatureName(model: item),
-                    maxAndMinTemperature: getTempMax(model: item))
-            )
+            viewModel.appendCollections(items: ModalWeatherModel(
+                weekday: viewModel.getWeekDay(timeInterval: item.dt),
+                currentWeatherImageName: viewModel.getImageTemperatureName(model: item),
+                maxAndMinTemperature: viewModel.getTempMax(model: item)
+            ))
         }
         updateViews()
     }
@@ -201,74 +197,6 @@ class ModalWeatherController:
         return controller
     }
     
-    func getTempMax(model: APIResponseObject.WeatherDataResponse) -> String? {
-        guard let unwrappedFirstItem = model.list?.first,
-              let unwrappedModel = unwrappedFirstItem.main,
-              let unwrappedTempMax = unwrappedModel.tempMax else { return nil }
-        
-        return "\(Int(unwrappedTempMax - 273.15))°C"
-    }
-    
-    func getTempMax(model: APIResponseObject.List) -> String? {
-        guard let unwrappedModel = model.main,
-              let unwrappedTempMax = unwrappedModel.tempMax else { return nil }
-        
-        return "\(Int(unwrappedTempMax - 273.15))°C"
-    }
-    
-    func getImageTemperatureName(model: APIResponseObject.WeatherDataResponse) -> String {
-        guard let unwrappedFirstItem = model.list?.first,
-              let unwrappedModel = unwrappedFirstItem.weather?.first,
-              let unwrappedID = unwrappedModel.id else { return "default_icone" }
-        
-        switch unwrappedID {
-        case 804:
-            //overcast clouds
-            return "cloudy"
-        case 803:
-            //broken clouds
-            return "cloudy"
-        case 802:
-            //scattered clouds
-            return "partly_cloudy"
-        case 801:
-            //few clouds
-            return "partly_cloudy"
-        case 800:
-            //clear sky
-            return "sunny"
-        default:
-            return "default_icone"
-            
-        }
-    }
-    
-    func getImageTemperatureName(model: APIResponseObject.List) -> String {
-        guard let unwrappedModel = model.weather?.first,
-              let unwrappedID = unwrappedModel.id else { return "default_icone" }
-        
-        switch unwrappedID {
-        case 804:
-            //overcast clouds
-            return "cloudy"
-        case 803:
-            //broken clouds
-            return "cloudy"
-        case 802:
-            //scattered clouds
-            return "partly_cloudy"
-        case 801:
-            //few clouds
-            return "partly_cloudy"
-        case 800:
-            //clear sky
-            return "sunny"
-        default:
-            return "default_icone"
-            
-        }
-    }
-    
     func getCountryNameOrCity(model: APIResponseObject.WeatherDataResponse) -> String? {
         guard let unwrappedCity = model.city else { return nil }
         return unwrappedCity.name
@@ -279,7 +207,7 @@ class ModalWeatherController:
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return collectionViewItems.count
+        return viewModel.getNumberOfItemsInSection()
     }
     
     func collectionView(
@@ -291,7 +219,7 @@ class ModalWeatherController:
             for: indexPath
         ) as! ModalWeatherCollectionViewCell
         
-        let model = collectionViewItems[indexPath.row]
+        let model = viewModel.getModel(at: indexPath.row)
         cell.configureCell(
             weekdayString: model.weekday,
             currentWeatherImageNameString: model.currentWeatherImageName,

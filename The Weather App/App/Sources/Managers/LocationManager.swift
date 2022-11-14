@@ -35,7 +35,7 @@ final class LocationManager: NSObject {
     }
 
     func startUpdatingLocation() {
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             self.requestAlwaysAuthorization()
             if CLLocationManager.locationServicesEnabled() {
                 self.locationManager.startUpdatingLocation()

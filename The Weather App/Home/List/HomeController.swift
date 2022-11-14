@@ -235,6 +235,8 @@ class HomeController:
                     LocationManager.shared.requestAlwaysAuthorization()
                     
                 case .denied:
+                    self?.dataLoadingStatus = .loaded(nil)
+                    self?.updateViews()
                     self?.tableView.setEmptyView(EmptyStateView(
                         image: nil,
                         title: "Location Services disabled",

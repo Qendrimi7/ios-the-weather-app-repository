@@ -18,18 +18,7 @@ class AppDelegate:
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        
-        setup()
-        
         return true
-    }
-
-    private func setup() {
-        setupWindow()
-    }
-
-    private func setupWindow() {
-        window = UIWindow(frame: UIScreen.main.bounds)
     }
     
     // MARK: UISceneSession Lifecycle

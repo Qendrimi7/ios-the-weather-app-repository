@@ -301,10 +301,7 @@ class HomeController:
         _ cell: CurrentWeatherTableViewCell,
         didSelectItem model: APIResponseObject.WeatherDataResponse
     ) {
-        LocationManager.shared.startUpdatingLocation()
-        let modalViewController: ModalWeatherController = ModalWeatherController(model)
-        modalViewController.loadViewIfNeeded()
-        present(modalViewController, animated: true)
+        coordinator.presentModalController(model: model)
     }
     
 }

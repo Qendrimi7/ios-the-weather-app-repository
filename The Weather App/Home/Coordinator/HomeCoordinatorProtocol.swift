@@ -8,5 +8,5 @@
 import UIKit
 
 protocol HomeCoordinatorProtocol {
-    func goToWeatherDetailsController()
+    func presentModalController(model: APIResponseObject.WeatherDataResponse)
 }

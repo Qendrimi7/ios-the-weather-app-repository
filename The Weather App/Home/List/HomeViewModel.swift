@@ -22,7 +22,6 @@ struct HomeViewModel {
         }
     }
     
-    
     func sectionsCount() -> Int {
         return sections.count
     }

@@ -153,9 +153,9 @@ class ModalWeatherController:
         collectionView.delegate = self
         collectionView.dataSource = self
         
-//        maxTemperatureLabel.text = getTempMax(model: model.main)
-//        countryAndCityLabel.text = model.name
-//        currentWeatherImageView.image = UIImage(named: getImageTemperatureName(model: model.weather?.first))
+        maxTemperatureLabel.text = getTempMax(model: model)
+        countryAndCityLabel.text = getCountryNameOrCity(model: model)
+        currentWeatherImageView.image = UIImage(named: getImageTemperatureName(model: model))
         setupContent()
     }
     
@@ -186,15 +186,17 @@ class ModalWeatherController:
         return controller
     }
     
-    func getTempMax(model: APIResponseObject.Main?) -> String? {
-        guard let unwrappedModel = model,
+    func getTempMax(model: APIResponseObject.WeatherDataResponse) -> String? {
+        guard let unwrappedFirstItem = model.list?.first,
+              let unwrappedModel = unwrappedFirstItem.main,
               let unwrappedTempMax = unwrappedModel.tempMax else { return nil }
         
         return "\(Int(unwrappedTempMax - 273.15))°C"
     }
     
-    func getImageTemperatureName(model: APIResponseObject.Weather?) -> String {
-        guard let unwrappedModel = model,
+    func getImageTemperatureName(model: APIResponseObject.WeatherDataResponse) -> String {
+        guard let unwrappedFirstItem = model.list?.first,
+              let unwrappedModel = unwrappedFirstItem.weather?.first,
               let unwrappedID = unwrappedModel.id else { return "default_icone" }
         
         switch unwrappedID {
@@ -217,6 +219,11 @@ class ModalWeatherController:
             return "default_icone"
             
         }
+    }
+    
+    func getCountryNameOrCity(model: APIResponseObject.WeatherDataResponse) -> String? {
+        guard let unwrappedCity = model.city else { return nil }
+        return unwrappedCity.name
     }
     
     // MARK: - UICollectionViewDelegate, UICollectionViewDataSource

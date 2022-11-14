@@ -71,31 +71,33 @@ class HomeController:
         setupCoordinator()
         setupViews()
         Task {
-            let getHomeContentResponse = await getHomeContent(
-                alamofireParametersConvertible:
-                    APIRequestObject.GetWeatherData(
-                        lat: 51.1642292,
-                        lon: 10.4541194,
-                        appid: "7113867439c2da0f9bdce128003d8e02",
-                        cnt: 32 /// 4 Days
-                    ),
-                otherHeaders: [:]
-            )
-            
-            switch getHomeContentResponse {
-            case .failure(let error):
-                DispatchQueue.main.async { [weak self] in
-                    guard let strongSelf = self else { return }
-                    strongSelf.dataLoadingStatus = .loaded(error)
-                    strongSelf.updateViews()
-                }
+            if let apiKey = Constant.apiKeyForOpenWeatherMap {
+                let getHomeContentResponse = await getHomeContent(
+                    alamofireParametersConvertible:
+                        APIRequestObject.GetWeatherData(
+                            lat: 51.1642292,
+                            lon: 10.4541194,
+                            appid: apiKey,
+                            cnt: 32 /// 4 Days
+                        ),
+                    otherHeaders: [:]
+                )
                 
-            case .success(let response):
-                DispatchQueue.main.async { [weak self] in
-                    guard let strongSelf = self else { return }
-                    strongSelf.dataLoadingStatus = .loaded(nil)
-                    strongSelf.viewModel.appendSections(response: [response])
-                    strongSelf.updateViews()
+                switch getHomeContentResponse {
+                case .failure(let error):
+                    DispatchQueue.main.async { [weak self] in
+                        guard let strongSelf = self else { return }
+                        strongSelf.dataLoadingStatus = .loaded(error)
+                        strongSelf.updateViews()
+                    }
+                    
+                case .success(let response):
+                    DispatchQueue.main.async { [weak self] in
+                        guard let strongSelf = self else { return }
+                        strongSelf.dataLoadingStatus = .loaded(nil)
+                        strongSelf.viewModel.appendSections(response: [response])
+                        strongSelf.updateViews()
+                    }
                 }
             }
         }

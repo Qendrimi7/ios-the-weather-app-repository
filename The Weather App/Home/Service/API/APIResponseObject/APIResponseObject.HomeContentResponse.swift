@@ -32,8 +32,15 @@ extension APIResponseObject {
     }
 
     // MARK: - List
-    struct List: Codable {
-        let dt: TimeInterval?
+    struct List: Codable, Equatable, Hashable {
+        static func == (lhs: APIResponseObject.List, rhs: APIResponseObject.List) -> Bool {
+            let lhsDate = Date(timeIntervalSince1970: lhs.dt)
+            let rhsDate = Date(timeIntervalSince1970: rhs.dt)
+            let sameDay = Calendar.current.isDate(lhsDate, equalTo: rhsDate, toGranularity: .day)
+            return sameDay
+        }
+        
+        let dt: TimeInterval
         let main: Main?
         let weather: [Weather]?
         let clouds: Clouds?
@@ -51,12 +58,12 @@ extension APIResponseObject {
     }
 
     // MARK: - Clouds
-    struct Clouds: Codable {
+    struct Clouds: Codable, Hashable {
         let all: Int?
     }
 
     // MARK: - Main
-    struct Main: Codable {
+    struct Main: Codable, Hashable {
         let temp, feelsLike, tempMin, tempMax: Double?
         let pressure, seaLevel, grndLevel, humidity: Int?
         let tempKf: Double?
@@ -75,7 +82,7 @@ extension APIResponseObject {
     }
 
     // MARK: - Rain
-    struct Rain: Codable {
+    struct Rain: Codable, Hashable {
         let the3H: Double?
 
         enum CodingKeys: String, CodingKey {
@@ -84,12 +91,12 @@ extension APIResponseObject {
     }
 
     // MARK: - Sys
-    struct Sys: Codable {
+    struct Sys: Codable, Hashable {
         let pod: String?
     }
 
     // MARK: - Weather
-    struct Weather: Codable {
+    struct Weather: Codable, Hashable {
         let id: Int?
         let main, weatherDescription, icon: String?
 
@@ -101,7 +108,7 @@ extension APIResponseObject {
     }
 
     // MARK: - Wind
-    struct Wind: Codable {
+    struct Wind: Codable, Hashable {
         let speed: Double?
         let deg: Int?
         let gust: Double?

@@ -160,10 +160,25 @@ class ModalWeatherController:
     }
     
     private func setupContent() {
-        collectionViewItems.append(ModalWeatherModel(weekday: "MON", currentWeatherImageName: "partly_cloudy", maxAndMinTemperature: "12° 8°"))
-        collectionViewItems.append(ModalWeatherModel(weekday: "TUE", currentWeatherImageName: "partly_cloudy", maxAndMinTemperature: "12° 8°"))
-        collectionViewItems.append(ModalWeatherModel(weekday: "WED", currentWeatherImageName: "partly_cloudy", maxAndMinTemperature: "12° 8°"))
-        collectionViewItems.append(ModalWeatherModel(weekday: "THU", currentWeatherImageName: "partly_cloudy", maxAndMinTemperature: "12° 8°"))
+        guard let unwrappedList = model.list else { return }
+        
+        var nextFourDaysWeather = unwrappedList.uniqueElements()
+        nextFourDaysWeather.removeFirst()
+    
+        nextFourDaysWeather.forEach { item in
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEE"
+            let date = Date(timeIntervalSince1970: item.dt)
+            let dayInWeek = dateFormatter.string(from: date)
+            
+            collectionViewItems.append(
+                ModalWeatherModel(
+                    weekday: dayInWeek,
+                    currentWeatherImageName: getImageTemperatureName(model: item),
+                    maxAndMinTemperature: getTempMax(model: item))
+            )
+        }
         updateViews()
     }
     
@@ -194,9 +209,42 @@ class ModalWeatherController:
         return "\(Int(unwrappedTempMax - 273.15))°C"
     }
     
+    func getTempMax(model: APIResponseObject.List) -> String? {
+        guard let unwrappedModel = model.main,
+              let unwrappedTempMax = unwrappedModel.tempMax else { return nil }
+        
+        return "\(Int(unwrappedTempMax - 273.15))°C"
+    }
+    
     func getImageTemperatureName(model: APIResponseObject.WeatherDataResponse) -> String {
         guard let unwrappedFirstItem = model.list?.first,
               let unwrappedModel = unwrappedFirstItem.weather?.first,
+              let unwrappedID = unwrappedModel.id else { return "default_icone" }
+        
+        switch unwrappedID {
+        case 804:
+            //overcast clouds
+            return "cloudy"
+        case 803:
+            //broken clouds
+            return "cloudy"
+        case 802:
+            //scattered clouds
+            return "partly_cloudy"
+        case 801:
+            //few clouds
+            return "partly_cloudy"
+        case 800:
+            //clear sky
+            return "sunny"
+        default:
+            return "default_icone"
+            
+        }
+    }
+    
+    func getImageTemperatureName(model: APIResponseObject.List) -> String {
+        guard let unwrappedModel = model.weather?.first,
               let unwrappedID = unwrappedModel.id else { return "default_icone" }
         
         switch unwrappedID {

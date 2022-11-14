@@ -88,9 +88,9 @@ class ModalWeatherCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(
-        weekdayString: String,
+        weekdayString: String?,
         currentWeatherImageNameString: String,
-        maxAndMinTemperatureString: String
+        maxAndMinTemperatureString: String?
     ) {
         weekdayLabel.text = weekdayString
         currentWeatherImageView.image = UIImage(named: currentWeatherImageNameString)

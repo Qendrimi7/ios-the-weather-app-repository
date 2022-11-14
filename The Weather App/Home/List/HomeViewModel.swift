@@ -74,9 +74,8 @@ struct HomeViewModel {
     }
     
     func getDayName(model: APIResponseObject.WeatherDataResponse) -> String? {
-        guard let unwrappedFirstItem = model.list?.first,
-              let unwrappedInterval = unwrappedFirstItem.dt else { return nil }
-        let date = Date(timeIntervalSince1970: unwrappedInterval)
+        guard let unwrappedFirstItem = model.list?.first else { return nil }
+        let date = Date(timeIntervalSince1970: unwrappedFirstItem.dt)
         let calendar = Calendar.current
         let formatter = RelativeDateTimeFormatter()
         formatter.dateTimeStyle = .named

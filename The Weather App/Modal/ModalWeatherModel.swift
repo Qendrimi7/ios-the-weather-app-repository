@@ -8,7 +8,7 @@
 import Foundation
 
 struct ModalWeatherModel {
-    let weekday: String
+    let weekday: String?
     let currentWeatherImageName: String
-    let maxAndMinTemperature: String
+    let maxAndMinTemperature: String?
 }

@@ -27,6 +27,7 @@
 		486F9226291FFDA900B53ED9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486F9224291FFDA900B53ED9 /* Theme.swift */; };
 		48AB04CD29218FF0000D306B /* ModalWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04CC29218FF0000D306B /* ModalWeatherCollectionViewCell.swift */; };
 		48AB04CF2921AA27000D306B /* ModalWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04CE2921AA27000D306B /* ModalWeatherModel.swift */; };
+		48AB04D12921E44A000D306B /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB04D02921E44A000D306B /* Array.swift */; };
 		48AD95B12920035400F7035F /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B02920035400F7035F /* UIView+Constraint.swift */; };
 		48AD95B32920038100F7035F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B22920038100F7035F /* UIViewController.swift */; };
 		48AD95B52920039C00F7035F /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD95B42920039C00F7035F /* EmptyStateView.swift */; };
@@ -98,6 +99,7 @@
 		486F9224291FFDA900B53ED9 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		48AB04CC29218FF0000D306B /* ModalWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		48AB04CE2921AA27000D306B /* ModalWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalWeatherModel.swift; sourceTree = "<group>"; };
+		48AB04D02921E44A000D306B /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		48AD95B02920035400F7035F /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
 		48AD95B22920038100F7035F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		48AD95B42920039C00F7035F /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				48AD95B6292003B300F7035F /* UITableView.swift */,
 				48AD95B8292003CE00F7035F /* UIImageView.swift */,
 				48AD95BA2920040800F7035F /* UIView.swift */,
+				48AB04D02921E44A000D306B /* Array.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				48AD95BB2920040800F7035F /* UIView.swift in Sources */,
 				48AD95DD29203A9900F7035F /* HomeController.swift in Sources */,
 				486F9213291FD6AE00B53ED9 /* APIResponseObject.swift in Sources */,
+				48AB04D12921E44A000D306B /* Array.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
